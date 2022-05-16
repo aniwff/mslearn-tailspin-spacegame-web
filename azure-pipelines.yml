@@ -61,13 +61,12 @@ steps:
     zipAfterPublish: true
 
 - template: templates/build.yml
-  parameters: 
-    buildConfiguration: 'Release'
+  parameters:
+    buildConfiguration: 'Debug'
 
-- task: templates/build.yml
+- template: templates/build.yml
   parameters:
     buildConfiguration: 'Release'
-
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
