@@ -60,6 +60,14 @@ steps:
     arguments: '--no-build --configuration $(buildConfiguration) --output $(build.ArtifactStagingDirectory)/$(buildConfiguration)'
     zipAfterPublish: true
 
+- template: templates/build.yml
+  parameters: 
+    buildConfiguration: 'Release'
+
+- task: templates/build.yml
+  parameters:
+    buildConfiguration: 'Release'
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
